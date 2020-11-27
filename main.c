@@ -144,7 +144,7 @@ void LoadGame(u16 selection)
 
 	char *filename = (char*)gd->FileName;
 
-	VDP_fillTileMapRect(PLAN_A, 0x0020, 0, 0, 40, 28);
+	VDP_fillTileMapRect(VDP_BG_A, 0x0020, 0, 0, 40, 28);
 
 	if (gd->directoryID == 0xFEFF)	//load last game
 	{
@@ -235,7 +235,7 @@ int main()
 	VDP_setPaletteColor((PAL0 * 16) + 15, 0x0888);	//grey
 	VDP_setPaletteColor((PAL1 * 16) + 15, 0x00FF);	//yellow
 	VDP_setTextPalette(PAL0);
-	
+
 	VDP_drawText("READING SD CARD...", 10, 12);
 
 	OPEN_COMMANDS();
@@ -315,7 +315,7 @@ int main()
 			}
 			else if ((gd->Flags & 0x7) == 7)	//change directory
 			{
-				VDP_fillTileMapRect(PLAN_A, 0x0020, 0, 0, 40, 28);
+				VDP_fillTileMapRect(VDP_BG_A, 0x0020, 0, 0, 40, 28);
 
 				HWREG(COMM_RAM) = selection;
 				SEND_COMMAND(MCU_CONTROL_COMMAND_CHANGEDIR, 0);
@@ -340,7 +340,7 @@ int main()
 		{
 			if (bigrefresh)
 			{
-				VDP_fillTileMapRect(PLAN_A, 0x0020, 0, 0, 40, 28);
+				VDP_fillTileMapRect(VDP_BG_A, 0x0020, 0, 0, 40, 28);
 
 				VDP_drawText("MEGASD MENU", 16, 0);
 			}
